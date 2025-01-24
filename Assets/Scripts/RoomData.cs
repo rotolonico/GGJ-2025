@@ -6,7 +6,12 @@ namespace DefaultNamespace
         public int posX;
         public int posY;
         
-        public TubeGenerator.DIRECTION entranceDirection;
-        public TubeGenerator.DIRECTION exitDirection;
+        public TubeDataGenerator.DIRECTION entranceDirection;
+        public TubeDataGenerator.DIRECTION exitDirection;
+
+        public bool IsDirectionOpen(TubeDataGenerator.DIRECTION direction)
+        {
+            return entranceDirection == direction || exitDirection == direction;
+        }
     }
 }

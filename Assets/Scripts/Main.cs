@@ -12,7 +12,7 @@ public class Main : MonoBehaviour
     [ContextMenu("Generate Rooms")]
     private void Start()
     {
-        var test = TubeGenerator.GenerateRoomsData();
+        var test = TubeDataGenerator.GenerateRoomsData();
 
         foreach (var room in rooms)
         {
@@ -50,17 +50,17 @@ public class Main : MonoBehaviour
         }
     }
 
-    private Vector3 GetOffset(TubeGenerator.DIRECTION direction, Vector3 prefabSize)
+    private Vector3 GetOffset(TubeDataGenerator.DIRECTION direction, Vector3 prefabSize)
     {
         switch (direction)
         {
-            case TubeGenerator.DIRECTION.DOWN:
+            case TubeDataGenerator.DIRECTION.DOWN:
                 return new Vector3(0, -prefabSize.y / 2, 0);
-            case TubeGenerator.DIRECTION.UP:
+            case TubeDataGenerator.DIRECTION.UP:
                 return new Vector3(0, prefabSize.y / 2, 0);
-            case TubeGenerator.DIRECTION.LEFT:
+            case TubeDataGenerator.DIRECTION.LEFT:
                 return new Vector3(-prefabSize.x / 2, 0, 0);
-            case TubeGenerator.DIRECTION.RIGHT:
+            case TubeDataGenerator.DIRECTION.RIGHT:
                 return new Vector3(prefabSize.x / 2, 0, 0);
             default:
                 return Vector3.zero;

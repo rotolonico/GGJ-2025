@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
-public static class TubeGenerator
+public static class TubeDataGenerator
 {
     private const int maxRooms = 10;
     private const int borderLimit = 2;
