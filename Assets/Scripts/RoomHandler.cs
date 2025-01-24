@@ -11,6 +11,12 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private GameObject leftClose;
     [SerializeField] private GameObject rightOpen;
     [SerializeField] private GameObject rightClose;
+
+    [SerializeField] private GameObject startRoomTestFlag;
+    [SerializeField] private GameObject bossRoomTestFlag;
+    [SerializeField] private GameObject[] itemRoomsTestFlag;
+    [SerializeField] private GameObject puzzleRoomTestFlag;
+    [SerializeField] private GameObject secondaryRoomTestFlag;
     
     private RoomData _roomData;
 
@@ -18,6 +24,31 @@ public class RoomHandler : MonoBehaviour
     {
         _roomData = roomData;
         CloseOpenDoors();
+        
+        if (roomData.IsStartRoom())
+        {
+            startRoomTestFlag.SetActive(true);
+        }
+        
+        if (roomData.IsBossRoom())
+        {
+            bossRoomTestFlag.SetActive(true);
+        }
+        
+        if (roomData.isSecondaryRoom)
+        {
+            secondaryRoomTestFlag.SetActive(true);
+        }
+
+        if (roomData.isPuzzleRoom)
+        {
+            puzzleRoomTestFlag.SetActive(true);
+        }
+        
+        if (roomData.isItemRoom)
+        {
+            itemRoomsTestFlag[roomData.itemRoomIndex].SetActive(true);
+        }
     }
     
     private void CloseOpenDoors()
