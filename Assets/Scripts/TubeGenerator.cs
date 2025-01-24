@@ -11,7 +11,8 @@ public static class TubeGenerator
     {
         DOWN,
         LEFT,
-        RIGHT
+        RIGHT,
+        UP
     }
 
     public static List<RoomData> GenerateRoomsData()
@@ -85,22 +86,22 @@ public static class TubeGenerator
         {
             if (i > 0)
             {
-                roomsData[i].entranceDirection = GetDirection(roomsData[i - 1], roomsData[i]);
+                roomsData[i].entranceDirection = GetDirection(roomsData[i],roomsData[i - 1], true);
             }
 
             if (i < roomsData.Count - 1)
             {
-                roomsData[i].exitDirection = GetDirection(roomsData[i], roomsData[i + 1]);
+                roomsData[i].exitDirection = GetDirection(roomsData[i], roomsData[i + 1], false);
             }
         }
 
         return roomsData;
     }
 
-    private static DIRECTION GetDirection(RoomData from, RoomData to)
+    private static DIRECTION GetDirection(RoomData from, RoomData to, bool up)
     {
         if (to.posX > from.posX) return DIRECTION.RIGHT;
         if (to.posX < from.posX) return DIRECTION.LEFT;
-        return DIRECTION.DOWN;
+        return up ? DIRECTION.UP : DIRECTION.DOWN;
     }
 }

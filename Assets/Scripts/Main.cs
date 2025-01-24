@@ -56,6 +56,8 @@ public class Main : MonoBehaviour
         {
             case TubeGenerator.DIRECTION.DOWN:
                 return new Vector3(0, -prefabSize.y / 2, 0);
+            case TubeGenerator.DIRECTION.UP:
+                return new Vector3(0, prefabSize.y / 2, 0);
             case TubeGenerator.DIRECTION.LEFT:
                 return new Vector3(-prefabSize.x / 2, 0, 0);
             case TubeGenerator.DIRECTION.RIGHT:
