@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
@@ -11,14 +12,9 @@ public static class TubeGenerator
     private static int startingPosX = 0;
     private static int startingPosY = 0;
     
-    public static RoomData[] GenerateRooms()
+    public static List<RoomData> GenerateRoomsData()
     {
-        foreach (var room in rooms)
-        {
-            GameObject prefab = room.isTurn ? turnRoomPrefab : corridorRoomPrefab;
-            GameObject roomObject = Object.Instantiate(prefab);
-            roomObject.transform.position = new Vector3(room.posX, room.posY, 0);
-        }
+        return new List<RoomData>();
     }
     
 }
