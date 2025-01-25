@@ -182,7 +182,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 592323359}
-  smoothSpeed: 0.01
-  roomSize: {x: 10, y: 10, z: 0}
+  smoothSpeed: 0.05
+  roomSize: {x: 33.33333, y: 33.33333, z: 0}
 --- !u!1 &498478745
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 7948332058881469077, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
-  roomSize: {x: 10, y: 10}
+  roomSize: {x: 33.333332, y: 33.333332}
 --- !u!1 &592323356
 GameObject:
   m_ObjectHideFlags: 0

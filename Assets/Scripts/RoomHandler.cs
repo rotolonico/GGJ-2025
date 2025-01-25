@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class RoomHandler : MonoBehaviour
 {
+    public static readonly Vector2 RoomSize = new(33.333333f, 33.333333f);
+    
+    public enum RoomType
+    {
+        SIMPLE_ROOM,
+        ITEM_ROOM,
+        PUZZLE_ROOM
+    }
+    
+    [SerializeField] private RoomType roomType;
+    
     [SerializeField] private GameObject upOpen;
     [SerializeField] private GameObject upClose;
     [SerializeField] private GameObject downOpen;
@@ -19,6 +30,8 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private GameObject secondaryRoomTestFlag;
     
     private RoomData _roomData;
+    
+    public RoomType GetRoomType() => roomType;
 
     public void InitializeRoom(RoomData roomData)
     {
@@ -70,4 +83,10 @@ public class RoomHandler : MonoBehaviour
         rightOpen.SetActive(right);
         rightClose.SetActive(!right);
     }
+
+    public object GetRoomData() => _roomData;
+
+    public bool IsStartRoom() => _roomData.IsStartRoom();
+    
+    public bool IsBossRoom() => _roomData.IsBossRoom();
 }
