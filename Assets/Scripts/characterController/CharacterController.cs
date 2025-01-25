@@ -1,4 +1,6 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class CharacterController : MonoBehaviour
@@ -11,8 +13,12 @@ public class CharacterController : MonoBehaviour
 
     // player parameters
     [SerializeField] private float movSpeed;
-    [SerializeField] public float deceleration;  // Valore tra 0 e 1 per rallentare gradualmente
-    private float speedX, speedY;
+    [SerializeField] public float deceleration;
+
+    // Valore tra 0 e 1 per rallentare gradualmente
+    //private float speedX, speedY;
+    private Vector2 speed;
+
 
     private Vector2 inputMoveVector;
     private Vector2 inputLookVector;
@@ -20,6 +26,11 @@ public class CharacterController : MonoBehaviour
     // Reference to the arm (Dummy object)
     [SerializeField] private Transform armDummy;
 
+    private IBobble bobbleArmed;
+    private IBobble bobbleStored;
+
+    [SerializeField] private MonoBehaviour armedScript;
+    [SerializeField] private MonoBehaviour storedScript;
 
     // player movement state
     private bool decelerate = false;
@@ -37,6 +48,8 @@ public class CharacterController : MonoBehaviour
 
         // eventi
         inputActions.PlayerInput.Look.performed += OnLook;
+        inputActions.PlayerInput.Shoot.performed += _ => bobbleArmed.ApplyEffect(true);
+        inputActions.PlayerInput.Shoot.canceled += _ => bobbleArmed.ApplyEffect(false);
     }
 
 
@@ -70,28 +83,38 @@ public class CharacterController : MonoBehaviour
     {
         playerRB = gameObject.GetComponent<Rigidbody2D>();
 
+
+        if (armedScript != null)
+            bobbleArmed = armedScript as IBobble;
+
     }
 
     public void InputPlayer(InputAction.CallbackContext _context)
     {
         inputMoveVector = _context.ReadValue<Vector2>();
+        decelerate = false;
     }
 
     void FixedUpdate()
     {
-        speedX = inputMoveVector.x * movSpeed;
-        speedY = inputMoveVector.y * movSpeed;
+        speed = inputMoveVector * movSpeed;
+        playerRB.linearVelocity = decelerate ? Vector2.zero : speed;
+    }
 
-        // modifica velocity
-        if (decelerate)
-        {
-            playerRB.linearVelocity = new Vector2(0, 0);
+    public void ChangeBobble()
+    {
 
-        }
-        else
-        {
-            playerRB.linearVelocity = new Vector2(speedX, speedY);
-        }
+    }
+
+    public void ShootBobble(bool isShooting)
+    {
+        bobbleArmed.ApplyEffect(isShooting);
+    }
+
+    private void OnValidate()
+    {
+        if (armedScript != null && armedScript is not IBobble)
+            armedScript = null;
 
     }
 

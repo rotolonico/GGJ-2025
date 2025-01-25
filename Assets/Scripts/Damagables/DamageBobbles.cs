@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.TextCore;
 
 public class DamageBobbles : MonoBehaviour, IBobble
 {
     [SerializeField] private float _dmgPerParticle;
+    [SerializeField] private ParticleSystem _particles;
 
     private EnemyHealth _enemy;
 
@@ -12,12 +14,14 @@ public class DamageBobbles : MonoBehaviour, IBobble
             return;
 
         _enemy = other.GetComponent<EnemyHealth>();
-        ApplyEffect();   
+        _enemy.TakeDamage(_dmgPerParticle);
     }
 
-
-    public void ApplyEffect()
+    public void ApplyEffect(bool isShooting)
     {
-        _enemy.TakeDamage(_dmgPerParticle);
+        if (isShooting)
+            _particles.Play();
+        else
+            _particles.Stop();
     }
 }
