@@ -102,7 +102,7 @@ ScriptedImporter:
   layeredSpriteImportData:
   - name: braccio fucile
     originalName: 
-    pivot: {x: 0.5585392, y: 0.88691235}
+    pivot: {x: 0.7005381, y: 0.89605016}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 

@@ -23,7 +23,6 @@ public class CharacterController : MonoBehaviour
 
     // player movement state
     private bool decelerate = false;
-    public bool isRotating { get; set; } = false;
 
     private void Awake()
     {
@@ -36,14 +35,10 @@ public class CharacterController : MonoBehaviour
         inputActions.PlayerInput.Move.performed += OnMove;
         inputActions.PlayerInput.Move.canceled += OnMoveStop;
 
-
-
         // eventi
         inputActions.PlayerInput.Look.performed += OnLook;
-
-        
     }
-    
+
 
     private void OnMove(InputAction.CallbackContext context)
     {
@@ -53,20 +48,16 @@ public class CharacterController : MonoBehaviour
 
     private void OnLook(InputAction.CallbackContext context)
     {
+        inputLookVector = context.ReadValue<Vector2>();
 
-        if (isRotating)
+        if (inputLookVector.sqrMagnitude > 0.01f)  // Controllo per evitare rotazione errata con input zero
         {
-            inputLookVector = context.ReadValue<Vector2>();
+            float angle = Mathf.Atan2(inputLookVector.y, inputLookVector.x) * Mathf.Rad2Deg;
+            armDummy.rotation = Quaternion.Euler(0, 0, angle);
 
-            if (inputLookVector.sqrMagnitude > 0.01f)  // Controllo per evitare rotazione errata con input zero
-            {
-                float angle = Mathf.Atan2(inputLookVector.y, inputLookVector.x) * Mathf.Rad2Deg;
-                armDummy.rotation = Quaternion.Euler(0, 0, angle);
-
-                Debug.Log($"Braccio ruotato a: {angle} gradi");
-            }
+            Debug.Log($"Braccio ruotato a: {angle} gradi");
         }
-        
+
     }
 
     private void OnMoveStop(InputAction.CallbackContext context)
@@ -92,15 +83,16 @@ public class CharacterController : MonoBehaviour
         speedY = inputMoveVector.y * movSpeed;
 
         // modifica velocity
-        if(decelerate)
+        if (decelerate)
         {
             playerRB.linearVelocity = new Vector2(0, 0);
-            
-        } else
+
+        }
+        else
         {
             playerRB.linearVelocity = new Vector2(speedX, speedY);
         }
-        
+
     }
 
     // graphic debugging
