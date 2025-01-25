@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8142670978833844458}
   - component: {fileID: 2553318478663546508}
   - component: {fileID: 2520801967045541349}
+  - component: {fileID: 3027317686024599412}
   m_Layer: 0
   m_Name: Damage Bubbles
   m_TagString: Untagged
@@ -4852,6 +4853,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3027317686024599412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266891604388510243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0561d0c4ac5b146a28d91162ff68ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dmgPerParticle: 0.01
+  _particles: {fileID: 2553318478663546508}
 --- !u!1 &6395703197049855401
 GameObject:
   m_ObjectHideFlags: 0
