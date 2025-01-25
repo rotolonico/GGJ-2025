@@ -21,6 +21,9 @@ public class EnemyHealth : MonoBehaviour
         if (!_isAlive)
             return;
 
+
+
+        Debug.Log("Oh no!");
         _health -= damage;
 
         if (_health > 0)
