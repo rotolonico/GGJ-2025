@@ -8,6 +8,8 @@ public class DamageBobbles : MonoBehaviour, IBobble
 
     private EnemyHealth _enemy;
 
+    public Color color { get; set; } = Color.white;
+
     private void OnParticleCollision(GameObject other)
     {
         if (!other.CompareTag(Constants.ENEMY_TAG))

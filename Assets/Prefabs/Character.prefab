@@ -11,11 +11,9 @@ GameObject:
   - component: {fileID: 4480316729994799574}
   - component: {fileID: 8730985554795367768}
   - component: {fileID: 263366802597374712}
-  - component: {fileID: 5721123930853689467}
-  - component: {fileID: 5528554076741580471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2114059629362919085}
@@ -81,34 +79,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5721123930853689467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596566208072476289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b258c82cf4ec046299d990602a22bf1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valvesText: {fileID: 0}
---- !u!114 &5528554076741580471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596566208072476289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddbd7e84980942f393e31b3dde0ad61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  currentHealth: 5
-  spriteRenderers: []
 --- !u!1 &4003240023140673673
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2114059629362919085}
   - component: {fileID: 9154752179192852626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: braccio fucile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050580596509968732}
   - component: {fileID: 5971221253393325903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: munizione
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +267,7 @@ GameObject:
   - component: {fileID: 748339766300404457}
   - component: {fileID: 3840319636969918918}
   - component: {fileID: 891687325076600754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: personaggio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,6 +642,10 @@ PrefabInstance:
       value: Boss Bubbles
       objectReference: {fileID: 0}
     - target: {fileID: 2266891604388510243, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266891604388510243, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -708,12 +682,20 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
@@ -811,6 +793,10 @@ PrefabInstance:
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[4].tangentMode
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 6395703197049855401, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8142670978833844458, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -889,6 +875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damage Bubbles
       objectReference: {fileID: 0}
+    - target: {fileID: 2266891604388510243, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2520801967045541349, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -922,6 +912,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 8
       objectReference: {fileID: 0}
@@ -940,6 +934,10 @@ PrefabInstance:
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
@@ -1036,6 +1034,10 @@ PrefabInstance:
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[4].tangentMode
       value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395703197049855401, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8142670978833844458, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: m_LocalScale.x

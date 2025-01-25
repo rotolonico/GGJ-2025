@@ -5,20 +5,15 @@ using UnityEngine.InputSystem;
 
 public class CharacterController : MonoBehaviour
 {
-
     // input system
     private UIPlayerInput inputActions;
-
     private Rigidbody2D playerRB;
 
     // player parameters
     [SerializeField] private float movSpeed;
     [SerializeField] public float deceleration;
 
-    // Valore tra 0 e 1 per rallentare gradualmente
-    //private float speedX, speedY;
     private Vector2 speed;
-
 
     private Vector2 inputMoveVector;
     private Vector2 inputLookVector;
@@ -26,14 +21,13 @@ public class CharacterController : MonoBehaviour
     // Reference to the arm (Dummy object)
     [SerializeField] private Transform armDummy;
 
+    [SerializeField] private MonoBehaviour armedScript;
+    [SerializeField] private MonoBehaviour storedScript;
     private IBobble bobbleArmed;
     private IBobble bobbleStored;
 
-    [SerializeField] private MonoBehaviour armedScript;
-    [SerializeField] private MonoBehaviour storedScript;
-
     // player movement state
-    private bool decelerate = false;
+    private bool isMoving = false;
 
     private void Awake()
     {
@@ -56,7 +50,7 @@ public class CharacterController : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         inputMoveVector = context.ReadValue<Vector2>();
-        decelerate = false;
+        isMoving = false;
     }
 
     private void OnLook(InputAction.CallbackContext context)
@@ -65,7 +59,7 @@ public class CharacterController : MonoBehaviour
 
         if (inputLookVector.sqrMagnitude > 0.01f)  // Controllo per evitare rotazione errata con input zero
         {
-            float angle = Mathf.Atan2(inputLookVector.y, inputLookVector.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(inputLookVector.y, inputLookVector.x) * Mathf.Rad2Deg + 90;
             armDummy.rotation = Quaternion.Euler(0, 0, angle);
 
             Debug.Log($"Braccio ruotato a: {angle} gradi");
@@ -76,7 +70,7 @@ public class CharacterController : MonoBehaviour
     private void OnMoveStop(InputAction.CallbackContext context)
     {
         Debug.Log("move stop");
-        decelerate = true;
+        isMoving = true;
     }
 
     void Start()
@@ -92,13 +86,13 @@ public class CharacterController : MonoBehaviour
     public void InputPlayer(InputAction.CallbackContext _context)
     {
         inputMoveVector = _context.ReadValue<Vector2>();
-        decelerate = false;
+        isMoving = false;
     }
 
     void FixedUpdate()
     {
         speed = inputMoveVector * movSpeed;
-        playerRB.linearVelocity = decelerate ? Vector2.zero : speed;
+        playerRB.linearVelocity = isMoving ? Vector2.zero : speed;
     }
 
     public void ChangeBobble()
