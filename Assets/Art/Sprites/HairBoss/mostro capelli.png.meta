@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 4f9d599628f964751969fa1b02e507f4
+guid: 389ce20c268ae1340ab0b11644e05baa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1977991612300609277
-    second: camera_background_0
+      213: 4874127507087749545
+    second: mostro capelli_0
+  - first:
+      213: -4081985328303738981
+    second: mostro capelli_1
+  - first:
+      213: 5016076100109022115
+    second: mostro capelli_2
+  - first:
+      213: -2035967845010373634
+    second: mostro capelli_3
+  - first:
+      213: 3841657145913402923
+    second: mostro capelli_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 45
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,23 +138,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: camera_background_0
+      name: mostro capelli_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 2048
+        x: 285
+        y: 614
+        width: 1242
+        height: 1356
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 309be14cb13cc84e0800000000000000
-      internalID: -1977991612300609277
+      spriteID: 9a1fce9b42164a340800000000000000
+      internalID: 4874127507087749545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mostro capelli_1
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 850
+        width: 351
+        height: 905
+      alignment: 9
+      pivot: {x: 0.5111957, y: 0.92518914}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9f6910a8ffd957c0800000000000000
+      internalID: -4081985328303738981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mostro capelli_2
+      rect:
+        serializedVersion: 2
+        x: 2664
+        y: 1099
+        width: 487
+        height: 619
+      alignment: 9
+      pivot: {x: 0.18527566, y: 0.8744356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3335103aeac9540800000000000000
+      internalID: 5016076100109022115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mostro capelli_3
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 500
+        width: 328
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef30a00380aceb3e0800000000000000
+      internalID: -2035967845010373634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mostro capelli_4
+      rect:
+        serializedVersion: 2
+        x: 1961
+        y: 436
+        width: 303
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26620bf1de405530800000000000000
+      internalID: 3841657145913402923
       vertices: []
       indices: 
       edges: []
@@ -151,7 +251,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 61644c54781b4ec4784852acbd1b9485
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +261,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      camera_background_0: -1977991612300609277
+      mostro capelli_0: 4874127507087749545
+      mostro capelli_1: -4081985328303738981
+      mostro capelli_2: 5016076100109022115
+      mostro capelli_3: -2035967845010373634
+      mostro capelli_4: 3841657145913402923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
