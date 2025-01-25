@@ -151,12 +151,16 @@ public static class TubeDataGenerator
             newItemRoom.itemRoomIndex = i;
         }
 
+        var nonItemsSecondaryRooms = new List<RoomData>();
+
         // Add other secondary rooms until max secondary room limit is reached
         var otherSecondaryRooms = possibleSecondaryRooms.Take(maxSecondaryRooms - numberOfItemRooms).ToList();
         foreach (var otherSecondaryRoom in otherSecondaryRooms)
         {
-            AddSecondaryRoom(otherSecondaryRoom);
+            nonItemsSecondaryRooms.Add(AddSecondaryRoom(otherSecondaryRoom));
         }
+
+        foreach (var roomData in nonItemsSecondaryRooms.Take(ValvesHandler.totalValves)) roomData.isValveRoom = true;
 
         return roomsData;
     }
