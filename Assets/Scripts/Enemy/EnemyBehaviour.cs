@@ -62,14 +62,9 @@ namespace Enemy
 
             if (state == EnemyState.IDLE)
             {
-                if (distanceToPlayer < distanceEpsilon)
+                if (distanceToPlayer < distanceEpsilon && IsSameRoomAsPlayer())
                 {
-                    // Raycast line and see if there's a wall between the player and the enemy
-                    var hit = Physics2D.Raycast(transform.position, target.position - transform.position, distanceToPlayer);
-                    if (hit.collider == null || !hit.collider.CompareTag("Wall"))
-                    {
-                        StartAiming();
-                    }
+                    StartAiming();
                 }
             }
 
@@ -95,6 +90,14 @@ namespace Enemy
             }
         }
 
+        private bool IsSameRoomAsPlayer()
+        {
+            var playerRoom = CameraRoomFollower.GetRoomClampedPosition(target.position, RoomHandler.RoomSize);
+            var enemyRoom = CameraRoomFollower.GetRoomClampedPosition(transform.position, RoomHandler.RoomSize);
+            
+            return playerRoom == enemyRoom;
+        }
+
         private void StartAiming()
         {
             StartCoroutine(AimingSequence());
@@ -109,6 +112,7 @@ namespace Enemy
             state = EnemyState.TIRED;
             yield return new WaitForSecondsRealtime(tiredTime);
             state = EnemyState.IDLE;
+            SetRandomIdleDirection();
         }
 
         private void OnDrawGizmos()
@@ -123,7 +127,16 @@ namespace Enemy
             // If wall is hit, reverse idle direction
             if (!other.collider.CompareTag("Player"))
             {
-                idleDirection = -idleDirection;
+                // Reflect 90 degrees
+                
+                if (state == EnemyState.IDLE)
+                {
+                    idleDirection = Vector2.Reflect(idleDirection, other.GetContact(0).normal);
+                }
+                else if (state == EnemyState.ATTACK)
+                {
+                    attackDirection = Vector2.Reflect(attackDirection, other.GetContact(0).normal);
+                }
             }
         }
     }
