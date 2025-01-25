@@ -123,7 +123,7 @@ namespace Enemy
             // If wall is hit, reverse idle direction
             if (!other.collider.CompareTag("Player"))
             {
-                idleDirection = -idleDirection; // Reverse the idle direction upon collision
+                idleDirection = -idleDirection;
             }
         }
     }

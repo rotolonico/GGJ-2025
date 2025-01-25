@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 7948332058881469077, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
-  roomSize: {x: 33.333332, y: 33.333332}
+  roomSize: {x: 35, y: 35}
 --- !u!1 &592323356
 GameObject:
   m_ObjectHideFlags: 0
