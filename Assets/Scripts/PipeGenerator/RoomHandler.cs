@@ -28,6 +28,8 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private GameObject[] itemRoomsTestFlag;
     [SerializeField] private GameObject puzzleRoomTestFlag;
     [SerializeField] private GameObject secondaryRoomTestFlag;
+
+    [SerializeField] private Transform rotatorParent;
     
     private RoomData _roomData;
     
@@ -62,8 +64,22 @@ public class RoomHandler : MonoBehaviour
         {
             itemRoomsTestFlag[roomData.itemRoomIndex].SetActive(true);
         }
+        
+        RotateBasedOnExitDirection();
     }
-    
+
+    private void RotateBasedOnExitDirection()
+    {
+        rotatorParent.rotation = Quaternion.Euler(0, 0, _roomData.entranceDirection switch
+        {
+            TubeDataGenerator.DIRECTION.UP => 0,
+            TubeDataGenerator.DIRECTION.DOWN => 180,
+            TubeDataGenerator.DIRECTION.LEFT => 90,
+            TubeDataGenerator.DIRECTION.RIGHT => -90,
+            _ => 0
+        });
+    }
+
     private void CloseOpenDoors()
     {
         var up = _roomData.IsDirectionOpen(TubeDataGenerator.DIRECTION.UP);

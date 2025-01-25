@@ -1,40 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2034023406136490309
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5363297575562856276}
-  m_Layer: 0
-  m_Name: RotationParent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5363297575562856276
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034023406136490309}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7785922554311572002}
-  - {fileID: 1446783762746807506}
-  - {fileID: 1540425743302938834}
-  - {fileID: 1147894494794430952}
-  m_Father: {fileID: 2272693500887226494}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3347853068455069485
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +30,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5363297575562856276}
+  m_Father: {fileID: 2758017766477052199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3788288349583688638
 SpriteRenderer:
@@ -152,7 +117,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5363297575562856276}
+  m_Father: {fileID: 2758017766477052199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &313042337816921782
 SpriteRenderer:
@@ -239,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5363297575562856276}
+  m_Father: {fileID: 2758017766477052199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7825667051817947274
 SpriteRenderer:
@@ -326,7 +291,7 @@ Transform:
   m_LocalScale: {x: 30, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5363297575562856276}
+  m_Father: {fileID: 2758017766477052199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3453914246458231654
 SpriteRenderer:
@@ -467,13 +432,22 @@ PrefabInstance:
     - {fileID: 1373242380645000796, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
     - {fileID: 8489042425550026884, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6879333998734248, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4167017740577884913, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5363297575562856276}
+      addedObject: {fileID: 7785922554311572002}
+    - targetCorrespondingSourceObject: {fileID: 4167017740577884913, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1446783762746807506}
+    - targetCorrespondingSourceObject: {fileID: 4167017740577884913, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1540425743302938834}
+    - targetCorrespondingSourceObject: {fileID: 4167017740577884913, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1147894494794430952}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
---- !u!4 &2272693500887226494 stripped
+--- !u!4 &2758017766477052199 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6879333998734248, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4167017740577884913, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
   m_PrefabInstance: {fileID: 2274962148737283030}
   m_PrefabAsset: {fileID: 0}

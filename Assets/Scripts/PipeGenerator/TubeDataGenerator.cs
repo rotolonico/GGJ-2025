@@ -126,8 +126,15 @@ public static class TubeDataGenerator
         }
 
         // Add one random puzzle room in the second half of the rooms
-        int puzzleRoomIndex = Random.Range(roomsData.Count / 2, roomsData.Count - 1);
-        roomsData[puzzleRoomIndex].isPuzzleRoom = true;
+        var foundPuzzleRoom = false;
+        int puzzleRoomIndex = -1;
+        while (!foundPuzzleRoom)
+        {
+            puzzleRoomIndex = Random.Range(roomsData.Count / 2, roomsData.Count - 1);
+            if (roomsData[puzzleRoomIndex].isTurn) continue;
+            roomsData[puzzleRoomIndex].isPuzzleRoom = true;
+            foundPuzzleRoom = true;
+        }
 
         Shuffle(possibleSecondaryRooms);
 
