@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rat lineart white_0: 3586908777245657503
+      rat lineart white_1: 1905031242523307462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
