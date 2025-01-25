@@ -5,9 +5,9 @@ using UnityEngine;
 
 public static class TubeDataGenerator
 {
-    private const int maxRooms = 10;
-    private const int borderLimit = 2;
-    private const int maxSecondaryRooms = 5;
+    private const int maxRooms = 100;
+    private const int borderLimit = 10;
+    private const int maxSecondaryRooms = 75;
     private const int numberOfItemRooms = 2;
 
     public enum DIRECTION
