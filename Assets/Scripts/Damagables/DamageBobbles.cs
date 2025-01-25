@@ -3,25 +3,17 @@ using UnityEngine;
 public class DamageBobbles : MonoBehaviour, IBobble
 {
 
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnParticleCollision(GameObject other)
     {
-        if(other != null) { }
+        if (!other.CompareTag(Constants.ENEMY_TAG))
+            return;
 
         ApplyEffect();   
     }
+
+
     public void ApplyEffect()
     {
-        
+                
     }
 }
