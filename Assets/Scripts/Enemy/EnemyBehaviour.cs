@@ -13,6 +13,12 @@ namespace Enemy
         private const float tiredTime = 1f;
 
         private bool delay;
+        
+        [SerializeField] private Animator animator;
+        [SerializeField] private Animation attackAnimation;
+        [SerializeField] private Animation tiredAnimation;
+        [SerializeField] private Animation idleAnimation;
+        [SerializeField] private Animation aimingAnimation;
 
         private SpriteRenderer sr;
 
@@ -72,20 +78,19 @@ namespace Enemy
             {
                 case EnemyState.IDLE:
                     rb.linearVelocity = idleDirection * idleSpeed;
+                    transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(idleDirection.y, idleDirection.x) * Mathf.Rad2Deg);
                     sr.color = Color.white;
                     break;
                 case EnemyState.AIMING:
                     rb.linearVelocity = Vector2.zero; // Stop movement while aiming
                     attackDirection = (target.position - transform.position).normalized;
-                    sr.color = Color.blue;
+                    transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg);
                     break;
                 case EnemyState.ATTACK:
                     rb.linearVelocity = attackDirection * attackSpeed;
-                    sr.color = Color.red;
                     break;
                 case EnemyState.TIRED:
                     rb.linearVelocity = Vector2.zero; // Stop moving when tired
-                    sr.color = Color.yellow;
                     break;
             }
         }
@@ -106,12 +111,16 @@ namespace Enemy
         private IEnumerator AimingSequence()
         {
             state = EnemyState.AIMING;
+            animator.Play("RatAiming");
             yield return new WaitForSecondsRealtime(aimingTime);
             state = EnemyState.ATTACK;
+            animator.Play("RatAttack");
             yield return new WaitForSecondsRealtime(attackingTime);
             state = EnemyState.TIRED;
+            animator.Play("RatTired");
             yield return new WaitForSecondsRealtime(tiredTime);
             state = EnemyState.IDLE;
+            animator.Play("RatIdle");
             SetRandomIdleDirection();
         }
 
