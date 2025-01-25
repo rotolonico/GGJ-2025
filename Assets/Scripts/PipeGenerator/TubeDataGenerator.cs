@@ -9,6 +9,7 @@ public static class TubeDataGenerator
     private const int borderLimit = 2;
     private const int maxSecondaryRooms = 10;
     private const int numberOfItemRooms = 2;
+    private const int numberOfHealingRooms = 4;
 
     public enum DIRECTION
     {
@@ -161,6 +162,9 @@ public static class TubeDataGenerator
         }
 
         foreach (var roomData in nonItemsSecondaryRooms.Take(ValvesHandler.totalValves)) roomData.isValveRoom = true;
+
+        Shuffle(nonItemsSecondaryRooms);
+        foreach (var roomData in nonItemsSecondaryRooms.Take(numberOfHealingRooms)) roomData.isHealingRoom = true;
 
         return roomsData;
     }

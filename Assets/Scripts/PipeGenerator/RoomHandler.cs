@@ -30,6 +30,7 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private GameObject secondaryRoomTestFlag;
     
     [SerializeField] private GameObject valve;
+    [SerializeField] private GameObject health;
 
     [SerializeField] private Transform rotatorParent;
     
@@ -70,6 +71,11 @@ public class RoomHandler : MonoBehaviour
         if (roomData.isValveRoom)
         {
             valve.SetActive(true);
+        }
+
+        if (roomData.isHealingRoom)
+        {
+            health.SetActive(true);
         }
         
         RotateBasedOnExitDirection();

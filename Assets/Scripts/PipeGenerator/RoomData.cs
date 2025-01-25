@@ -14,6 +14,7 @@ namespace DefaultNamespace
         public bool isPuzzleRoom;
         public bool isSecondaryRoom;
         public bool isValveRoom;
+        public bool isHealingRoom;
 
         public bool isItemRoom;
         public int itemRoomIndex;
