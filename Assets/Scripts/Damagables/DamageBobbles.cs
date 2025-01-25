@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DamageBobbles : MonoBehaviour, IBobble
 {
-
     [SerializeField] private float _dmgPerParticle;
 
     private EnemyHealth _enemy;
