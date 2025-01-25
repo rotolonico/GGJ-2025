@@ -5,7 +5,7 @@ public class CharacterController : MonoBehaviour
 {
 
     // input system
-    private DefaultInputActions inputActions;
+    private UIPlayerInput inputActions;
 
     private Rigidbody2D playerRB;
 
@@ -27,17 +27,19 @@ public class CharacterController : MonoBehaviour
 
     private void Awake()
     {
-        inputActions = new DefaultInputActions();
+        inputActions = new UIPlayerInput();
 
         // Attivare l'Action Map Player
-        inputActions.Player.Enable();
+        inputActions.PlayerInput.Enable();
 
         // eventi "Move"
-        inputActions.Player.Move.performed += OnMove;
-        inputActions.Player.Move.canceled += OnMoveStop;
+        inputActions.PlayerInput.Move.performed += OnMove;
+        inputActions.PlayerInput.Move.canceled += OnMoveStop;
+
+
 
         // eventi
-        inputActions.Player.Look.performed += OnLook;
+        inputActions.PlayerInput.Look.performed += OnLook;
 
         
     }
