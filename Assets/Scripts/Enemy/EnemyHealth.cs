@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float _initHealth;
-    [SerializeField] private float _health;
 
+    [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private UnityEvent _onDeath;
 
-    private bool _isAlive => _health < 0;
+    private float _health;
+    private bool _isAlive => _health == 0;
 
     private void Start()
     {
@@ -24,6 +24,11 @@ public class EnemyHealth : MonoBehaviour
         _health -= damage;
 
         if (_health < 0)
+            _onDamage?.Invoke();
+        if (_health >= 0)
+        {
+            _health = 0;
             _onDeath?.Invoke();
+        }
     }
 }
