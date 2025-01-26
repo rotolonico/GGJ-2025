@@ -23,9 +23,9 @@ public class EnemyHealth : MonoBehaviour
 
         _health -= damage;
 
-        if (_health < 0)
+        if (_health > 0)
             _onDamage?.Invoke();
-        if (_health >= 0)
+        if (_health <= 0)
         {
             _health = 0;
             _onDeath?.Invoke();
