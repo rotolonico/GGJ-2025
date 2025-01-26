@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (_isAlive)
+        if (!_isAlive)
             return;
 
         _health -= damage;
