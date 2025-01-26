@@ -88,6 +88,17 @@ public static class TubeDataGenerator
             roomsData[^1].primaryRoomIndex = roomsData.Count - 1;
             roomsData[^2].isTurn = isTurning;
         }
+        
+        // Add one random puzzle room in the second half of the rooms
+        var foundPuzzleRoom = false;
+        int puzzleRoomIndex = -1;
+        while (!foundPuzzleRoom)
+        {
+            puzzleRoomIndex = Random.Range(roomsData.Count / 2, roomsData.Count - 1);
+            if (roomsData[puzzleRoomIndex].isTurn) continue;
+            roomsData[puzzleRoomIndex].isPuzzleRoom = true;
+            foundPuzzleRoom = true;
+        }
 
         // Add entrance and exit directions for each room
         for (int i = 0; i < roomsData.Count; i++)
@@ -109,6 +120,8 @@ public static class TubeDataGenerator
                     .Select(d => new KeyValuePair<RoomData, DIRECTION>(roomsData[i1 - 1], d));
                 foreach (var possibleSecRoom in possibleSecRooms)
                 {
+                    if (roomsData[i - 1].isPuzzleRoom) continue;
+                    
                     // Check if this room would overlap another possible secondary room
                     var possibleSecondaryRoomPosition =
                         AddDirection(new Vector2Int(possibleSecRoom.Key.posX, possibleSecRoom.Key.posY),
@@ -124,17 +137,6 @@ public static class TubeDataGenerator
                         new KeyValuePair<RoomData, DIRECTION>(possibleSecRoom.Key, possibleSecRoom.Value));
                 }
             }
-        }
-
-        // Add one random puzzle room in the second half of the rooms
-        var foundPuzzleRoom = false;
-        int puzzleRoomIndex = -1;
-        while (!foundPuzzleRoom)
-        {
-            puzzleRoomIndex = Random.Range(roomsData.Count / 2, roomsData.Count - 1);
-            if (roomsData[puzzleRoomIndex].isTurn) continue;
-            roomsData[puzzleRoomIndex].isPuzzleRoom = true;
-            foundPuzzleRoom = true;
         }
 
         Shuffle(possibleSecondaryRooms);

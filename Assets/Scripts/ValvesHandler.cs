@@ -10,7 +10,7 @@ public class ValvesHandler : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI valvesText;
     
-    private List<Collider2D> hitColliders = new List<Collider2D>();
+    private List<Collider2D> hitColliders = new();
 
     private void UpdateValveText() => valvesText.text = $"{maxValves - totalValves}/{maxValves}";
 

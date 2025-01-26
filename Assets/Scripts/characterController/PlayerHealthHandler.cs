@@ -13,6 +13,8 @@ public class PlayerHealthHandler : MonoBehaviour
     [SerializeField] private SpriteRenderer[] spriteRenderers;
 
     private bool invincibilityFrames = false;
+
+    private bool onPlatform;
     
     private void Update()
     {
@@ -33,6 +35,25 @@ public class PlayerHealthHandler : MonoBehaviour
         {
             Heal(1);
             Destroy(other.gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            onPlatform = true;
+        }
+        
+        if (other.gameObject.CompareTag("Void") && !onPlatform)
+        {
+            TakeDamage(1);
+            transform.position = AnchorInstance.AnchorPosition;
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            onPlatform = false;
         }
     }
 

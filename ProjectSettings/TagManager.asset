@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - Valve
   - Health
+  - Mass
+  - Platform
+  - Void
   layers:
   - Default
   - TransparentFX
@@ -15,9 +18,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Particle
-  - Enemy
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -52,6 +52,7 @@ public class RoomHandler : MonoBehaviour
         {
             bossRoomTestFlag.SetActive(true);
             downClose.SetActive(false);
+            downOpen.SetActive(true);
         }
         
         if (roomData.isSecondaryRoom)
