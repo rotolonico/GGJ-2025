@@ -41,7 +41,10 @@ public class PlayerHealthHandler : MonoBehaviour
         {
             onPlatform = true;
         }
-        
+    }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if (other.gameObject.CompareTag("Void") && !onPlatform)
         {
             TakeDamage(1);

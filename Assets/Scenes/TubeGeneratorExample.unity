@@ -532,6 +532,17 @@ MonoBehaviour:
   player: {fileID: 1809027230}
   roomPrefab: {fileID: 7948332058881469077, guid: 447761e19f9b849d997ebf50b780e010, type: 3}
   roomSize: {x: 33.333, y: 33.333}
+--- !u!114 &551647693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4582685719783436155, guid: 8e0bf28df4370604d8305fad1eb82b43, type: 3}
+  m_PrefabInstance: {fileID: 1096305300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &612695714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 5528554076741580471, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: healthText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 551647693}
     - target: {fileID: 5528554076741580471, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: spriteRenderers.Array.size
       value: 3
@@ -611,7 +622,7 @@ PrefabInstance:
     - target: {fileID: 5721123930853689467, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: valvesText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1187060273}
     - target: {fileID: 5971221253393325903, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -831,6 +842,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5971221253393325903, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
   m_PrefabInstance: {fileID: 612695714}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1187060273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9173469082647106867, guid: 8e0bf28df4370604d8305fad1eb82b43, type: 3}
+  m_PrefabInstance: {fileID: 1096305300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1809027230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4480316729994799574, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
