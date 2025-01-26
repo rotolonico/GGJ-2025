@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6659148555837117251, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: _dmgPerParticle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8632128952283051270, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: m_Layer
       value: 6

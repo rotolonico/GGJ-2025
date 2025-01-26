@@ -66,6 +66,9 @@ namespace Enemy
         {
             if (target == null)
                 return;
+            
+            if (isDead)
+                return;
 
             var distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
@@ -159,6 +162,8 @@ namespace Enemy
 
         public void Die()
         {
+            Destroy(gameObject);
+            
             if (isDead)
                 return;
 
@@ -170,7 +175,7 @@ namespace Enemy
         
         private IEnumerator Revive()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
             animator.Play("RatIdle");
             GetComponent<EnemyHealth>().Revive();
             isDead = false;
