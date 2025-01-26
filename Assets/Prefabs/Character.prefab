@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ef210caadfbcc4795fa8965887018c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 100
+  movSpeed: 20
   deceleration: 0.1
   armDummy: {fileID: 2114059629362919085}
   armedScript: {fileID: 6659148555837117251}

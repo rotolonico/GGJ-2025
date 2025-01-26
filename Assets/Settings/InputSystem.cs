@@ -201,17 +201,6 @@ public partial class @UIPlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""60621f91-f0c9-472e-9ab5-918727789d8d"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a2cec3d4-5f7f-412d-a176-f4ff2a9dfe4c"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",

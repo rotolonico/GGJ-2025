@@ -13,7 +13,7 @@ namespace Enemy
         private const float tiredTime = 1f;
 
         private bool delay;
-        
+
         [SerializeField] private Animator animator;
         [SerializeField] private Animation attackAnimation;
         [SerializeField] private Animation tiredAnimation;
@@ -35,7 +35,7 @@ namespace Enemy
         [SerializeField] private float attackSpeed;
         [SerializeField] private float idleSpeed;
 
-        private Transform target;
+        [field: SerializeField] private Transform target { get; set; }
         private Rigidbody2D rb;
         private bool isDead;
 
@@ -44,7 +44,7 @@ namespace Enemy
 
         private void Start()
         {
-            target = GameObject.FindWithTag("Player").transform;
+            //target = GameObject.FindWithTag("Player").transform;
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
 
@@ -64,6 +64,9 @@ namespace Enemy
 
         private void Update()
         {
+            if (target == null)
+                return;
+
             var distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
             if (state == EnemyState.IDLE)
@@ -99,7 +102,7 @@ namespace Enemy
         {
             var playerRoom = CameraRoomFollower.GetRoomClampedPosition(target.position, RoomHandler.RoomSize);
             var enemyRoom = CameraRoomFollower.GetRoomClampedPosition(transform.position, RoomHandler.RoomSize);
-            
+
             return playerRoom == enemyRoom;
         }
 
@@ -137,7 +140,7 @@ namespace Enemy
             if (!other.collider.CompareTag("Player"))
             {
                 // Reflect 90 degrees
-                
+
                 if (state == EnemyState.IDLE)
                 {
                     idleDirection = Vector2.Reflect(idleDirection, other.GetContact(0).normal);
@@ -147,6 +150,11 @@ namespace Enemy
                     attackDirection = Vector2.Reflect(attackDirection, other.GetContact(0).normal);
                 }
             }
+        }
+
+        public void SetTarget(Transform target)
+        {
+            this.target = target;
         }
     }
 }

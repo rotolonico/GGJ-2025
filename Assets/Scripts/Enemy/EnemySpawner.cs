@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Enemy
@@ -6,25 +7,24 @@ namespace Enemy
     public class EnemySpawner : MonoBehaviour
     {
         private const float spawnChance = 0.25f;
-        
+
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private RoomHandler roomHandler;
+        [SerializeField] private Transform player;
 
-
-        private void Start()
+        private IEnumerator Start()
         {
-            GenerateEnemies();
-        }
+            if (roomHandler.IsStartRoom() || roomHandler.IsBossRoom()) 
+                yield break;
 
-        private void GenerateEnemies()
-        {
-            if (roomHandler.IsStartRoom() || roomHandler.IsBossRoom()) return;
-            
             var enemySpawnPositions = GetEnemySpawnPositions(roomHandler.GetRoomType());
+            
+            yield return new WaitUntil(() => player != null);
+
             foreach (var enemySpawnPosition in enemySpawnPositions)
             {
                 if (roomHandler.GetRoomType() != RoomHandler.RoomType.ITEM_ROOM && UnityEngine.Random.value > spawnChance) continue;
-                
+
                 var enemyPosition = new Vector3(
                     enemySpawnPosition.x * RoomHandler.RoomSize.x,
                     enemySpawnPosition.y * RoomHandler.RoomSize.y,
@@ -32,8 +32,14 @@ namespace Enemy
                 );
                 var enemy = Instantiate(enemyPrefab, enemyPosition, Quaternion.identity);
                 enemy.transform.SetParent(transform, false);
-                
+                enemy.GetComponent<EnemyBehaviour>().SetTarget(player);
+
             }
+        }
+
+        public void SetPlayer(Transform transform)
+        {
+            player = transform;
         }
 
         private Vector2[] GetEnemySpawnPositions(RoomHandler.RoomType roomType)
