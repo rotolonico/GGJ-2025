@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class BubbleAnimationHandler : MonoBehaviour
 {
-    [SerializeField] private float animationTimeOnFrame = 2f;
-
-    [SerializeField] private Image image;
-    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private float animationTimeOnFrame = 1f;
+    
+    [SerializeField] private Image[] images;
     
     private void Start()
     {
@@ -17,9 +16,9 @@ public class BubbleAnimationHandler : MonoBehaviour
 
     private IEnumerator StartAnimation()
     {
-        foreach (var t in sprites)
+        foreach (var i in images)
         {
-            image.sprite = t;
+            i.gameObject.SetActive(true);
             yield return new WaitForSeconds(animationTimeOnFrame);
         }
 
