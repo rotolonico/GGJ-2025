@@ -25,7 +25,9 @@ public class ValvesHandler : MonoBehaviour
             UpdateValveText();
         }
     }
-    
+
+    private void Awake() => totalValves = maxValves;
+
     private void Start()
     {
         UpdateValveText();
