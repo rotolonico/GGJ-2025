@@ -5,11 +5,11 @@ using UnityEngine;
 
 public static class TubeDataGenerator
 {
-    private const int maxRooms = 10;
-    private const int borderLimit = 2;
-    private const int maxSecondaryRooms = 10;
-    private const int numberOfItemRooms = 2;
-    private const int numberOfHealingRooms = 4;
+    private static int maxRooms = 10;
+    private static int borderLimit = 2;
+    private static int maxSecondaryRooms = 10;
+    private static int numberOfItemRooms = 2;
+    private static int numberOfHealingRooms = 4;
 
     public enum DIRECTION
     {
@@ -22,6 +22,22 @@ public static class TubeDataGenerator
 
     public static List<RoomData> GenerateRoomsData()
     {
+        // Change parameters based on difficulty
+        if (DiffucltyManager.CurrentDifficulty == DiffucltyManager.Difficulty.Normal)
+        {
+            maxRooms = 10;
+            maxSecondaryRooms = 10;
+            numberOfItemRooms = 2;
+            numberOfHealingRooms = 6;
+        }
+        else if (DiffucltyManager.CurrentDifficulty == DiffucltyManager.Difficulty.Crazy)
+        {
+            maxRooms = 20;
+            maxSecondaryRooms = 20;
+            numberOfItemRooms = 2;
+            numberOfHealingRooms = 4;
+        }
+        
         int currentPositionX = 0;
         int currentPositionY = 0;
 

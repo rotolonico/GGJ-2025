@@ -6,7 +6,7 @@ namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
-        private const float spawnChance = 0.25f;
+        private static float spawnChance = 0.25f;
 
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private RoomHandler roomHandler;
@@ -14,6 +14,16 @@ namespace Enemy
 
         private IEnumerator Start()
         {
+            // Change parameters based on difficulty
+            if (DiffucltyManager.CurrentDifficulty == DiffucltyManager.Difficulty.Normal)
+            {
+                spawnChance = 0.25f;
+            }
+            else if (DiffucltyManager.CurrentDifficulty == DiffucltyManager.Difficulty.Crazy)
+            {
+                spawnChance = 0.75f;
+            }
+            
             if (roomHandler.IsStartRoom() || roomHandler.IsBossRoom()) 
                 yield break;
 
