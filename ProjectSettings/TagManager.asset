@@ -15,14 +15,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BossBody
   - Water
   - UI
   - Player
   - Bobble
   - Enemy
-  - 
-  - 
+  - Wall
+  - Projectile
   - 
   - 
   - 

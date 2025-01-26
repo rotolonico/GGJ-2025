@@ -11,35 +11,53 @@ public class BossController : MonoBehaviour
         Attacking, // in fase di attacco
         HookEngaging, // in fase di aggancio
         Exposed, // boss esposto (attaccabile)
-        Stunned
+        Stunned,
+        Died
     }
     [SerializeField] private BossStage stage;
 
+    [Header("References")]
     [SerializeField] private List<Transform> enviromentGrips;
     [SerializeField] private List<Rigidbody2D> hairHands;
+    [SerializeField] private Transform bodyTransform;
+    [SerializeField] private SpriteRenderer currentEye;
 
-    [SerializeField]
-    private float hairHandSpeed;
+    [SerializeField] private Animation pupilAnimation;
+
+    [Header("Parameters")]
+    [SerializeField] private float hairHandSpeed;
+    [SerializeField] private float projectileAngle = 30f; 
+    [SerializeField] private float projectileSpeed;
+
+    [Header("Sprites")]
+    [SerializeField] private Sprite halfOpenedEye;
+    [SerializeField] private Sprite openedEye;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject projectilePrefab;
 
     float timeToReach = 0;
 
+    const float hookedTime = 2; //quantit√† di tempo in cui il boss resta hookato al grip
+
+    const float attackingTime = 1; //tempo in fase di attacco
+    const float exposedTime = 2.5f; //tempo in cui √® esposto
+
+    const float stunnedTime = 2f; //tempo in cui √® esposto
 
 
-    const float hookedTime = 2; //quantit‡ di tempo in cui il boss resta hookato al grip
-
-    const float attackingTime = 3; //tempo in fase di attacco
-    const float exposedTime = 1.5f; //tempo in cui Ë esposto
-
-    const float stunnedTime = 1.5f; //tempo in cui Ë esposto
+    // fasi del boss
+    int bossPhases = 3;
+    int currentBossPhases = 0;
 
 
     /* 
-    const float hookedTime = 0;//2; //quantit‡ di tempo in cui il boss resta hookato al grip
+    const float hookedTime = 0;//2; //quantit√† di tempo in cui il boss resta hookato al grip
 
     const float attackingTime = 0;//3; //tempo in fase di attacco
-    const float exposedTime = 0;//1.5f; //tempo in cui Ë esposto
+    const float exposedTime = 0;//1.5f; //tempo in cui √® esposto
 
-    const float stunnedTime = 0;//1.5f; //tempo in cui Ë esposto 
+    const float stunnedTime = 0;//1.5f; //tempo in cui √® esposto 
     */
 
 
@@ -87,20 +105,33 @@ public class BossController : MonoBehaviour
             case BossStage.Hooked:
                 timeToReach = Time.time + attackingTime;
                 stage = BossStage.Attacking;
+                currentEye.sprite = halfOpenedEye;
+                pupilAnimation.gameObject.SetActive(false);
+                SpawnProjectiles();
                 break;
             case BossStage.Attacking:
                 timeToReach = Time.time + exposedTime;
                 stage = BossStage.Exposed;
+                currentEye.sprite = openedEye;
+                pupilAnimation.gameObject.SetActive(true);
+                pupilAnimation.Rewind();
+                pupilAnimation.Stop();
                 break;
             case BossStage.HookEngaging:
                 timeToReach = Time.time + hookedTime;
                 stage = BossStage.Hooked;
+                currentEye.sprite = halfOpenedEye;
+                pupilAnimation.gameObject.SetActive(false);
                 break;
             case BossStage.Exposed:
                 stage = BossStage.HookEngaging;
+                currentEye.sprite = halfOpenedEye;
+                pupilAnimation.gameObject.SetActive(false);
                 break;
             case BossStage.Stunned:
                 stage = BossStage.HookEngaging;
+                currentEye.sprite = halfOpenedEye;
+                pupilAnimation.gameObject.SetActive(false);
                 break;
         }
 
@@ -109,8 +140,12 @@ public class BossController : MonoBehaviour
 
     public void ForceStunning()
     {
-        stage = BossStage.Stunned;
         timeToReach = Time.time + stunnedTime;
+        stage = BossStage.Stunned;
+        currentEye.sprite = openedEye;
+        pupilAnimation.gameObject.SetActive(true);
+        pupilAnimation.Rewind();
+        pupilAnimation.Play();
     }
 
     private void HandleTimedBehaviour()
@@ -190,5 +225,69 @@ public class BossController : MonoBehaviour
             selectedGrip = selectedGrip + (result);
         }
         //Debug.Log(selectedGrip);
+    }
+
+    Vector3[] GetShootingDirections()
+    {
+        // Direzione globale verso il basso
+        Vector3 downDirection = Vector3.down;
+
+        // Rotazione per ottenere le direzioni oblique
+        Quaternion leftRotation = Quaternion.Euler(0, 0, projectileAngle);
+        Quaternion rightRotation = Quaternion.Euler(0, 0, -projectileAngle);
+
+        Vector3 leftDirection = leftRotation * downDirection;  // Inclinata a sinistra
+        Vector3 rightDirection = rightRotation * downDirection; // Inclinata a destra
+
+        return new Vector3[]
+        {
+            downDirection,   // Gi√π dritto
+            leftDirection,   // Obliqua sinistra
+            rightDirection   // Obliqua destra
+        };
+    }
+
+    void SpawnProjectiles()
+    {
+        // Otteniamo le tre direzioni
+        Vector3[] directions = GetShootingDirections();
+
+        foreach (Vector3 direction in directions)
+        {
+            // Instanzia il proiettile nella posizione dell'oggetto
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.transform.position = bodyTransform.position;
+
+            projectile.GetComponent<BossProjectile>().SetProjectile(direction, projectileSpeed);
+
+
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Vector3[] directions = GetShootingDirections();
+        Gizmos.color = Color.green;
+
+        foreach (Vector3 direction in directions)
+        {
+            Gizmos.DrawLine(bodyTransform.position, bodyTransform.position + direction * 17f);  // Linea pi√π lunga
+        }
+    }
+
+    [ContextMenu("IncrementPhase")]
+    public void IncrementPhase() {
+
+        currentBossPhases++;
+        ForceStunning();
+        if (currentBossPhases == bossPhases)
+        {
+            Debug.Log("boss is death");
+            stage = BossStage.Died;
+
+            //caduta boss
+            hairHands[0].constraints = RigidbodyConstraints2D.None;
+            hairHands[1].constraints = RigidbodyConstraints2D.None;
+        }
     }
 }
