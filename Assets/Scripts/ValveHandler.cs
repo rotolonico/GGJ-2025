@@ -6,6 +6,9 @@ public class ValveHandler : MonoBehaviour
     private const float speed = 1f;
     
     private Quaternion startRotation;
+
+    [SerializeField] private Sprite solvedValve;
+    [SerializeField] private SpriteRenderer sr;
     
     public void ActivateValve()
     {
@@ -25,11 +28,10 @@ public class ValveHandler : MonoBehaviour
                 t += Time.deltaTime * speed;
                 transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
                 transform.localScale -= new Vector3(Time.deltaTime * speed * 20, Time.deltaTime * speed * 20, 0);
-                transform.localScale = new Vector3(Mathf.Max(0, transform.localScale.x), Mathf.Max(0, transform.localScale.y), 0);
                 yield return null;
             }
         }
         
-        Destroy(gameObject);
+        sr.sprite = solvedValve;
     }
 }
