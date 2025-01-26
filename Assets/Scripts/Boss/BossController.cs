@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossController : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
 
     [SerializeField] private EnemyHealth[] phases;
+
+    [SerializeField] private UnityEvent onDeath;
 
     public EnemyHealth currentEnemy => phases[currentBossPhases];
 
@@ -319,6 +322,7 @@ public class BossController : MonoBehaviour
             //caduta boss
             hairHands[0].constraints = RigidbodyConstraints2D.None;
             hairHands[1].constraints = RigidbodyConstraints2D.None;
+            onDeath?.Invoke();
         }
     }
 }
