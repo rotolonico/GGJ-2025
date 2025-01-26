@@ -173,25 +173,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4e19cd9cbdf044081e7c72ca185bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initHealth: 2000
+  _initHealth: 50
   _onDamage:
     m_PersistentCalls:
       m_Calls: []
   _onDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3562299647978414598}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  sr: {fileID: 696138986469975521}
 --- !u!70 &6653498815087602098
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

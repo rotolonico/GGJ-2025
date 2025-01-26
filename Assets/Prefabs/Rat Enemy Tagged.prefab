@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4e19cd9cbdf044081e7c72ca185bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initHealth: 2000
+  _initHealth: 50
   _onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -120,6 +120,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sr: {fileID: 0}
 --- !u!58 &1538144506593024807
 CircleCollider2D:
   m_ObjectHideFlags: 0

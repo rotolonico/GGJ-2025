@@ -156,5 +156,24 @@ namespace Enemy
         {
             this.target = target;
         }
+
+        public void Die()
+        {
+            if (isDead)
+                return;
+
+            isDead = true;
+            animator.Play("RatDead");
+            
+            StartCoroutine(Revive());
+        }
+        
+        private IEnumerator Revive()
+        {
+            yield return new WaitForSeconds(3);
+            animator.Play("RatIdle");
+            GetComponent<EnemyHealth>().Revive();
+            isDead = false;
+        }
     }
 }
