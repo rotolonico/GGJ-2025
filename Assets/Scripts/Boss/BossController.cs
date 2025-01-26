@@ -28,7 +28,7 @@ public class BossController : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private float hairHandSpeed;
-    [SerializeField] private float projectileAngle = 30f; 
+    [SerializeField] private float projectileAngle = 30f;
     [SerializeField] private float projectileSpeed;
 
     [Header("Sprites")]
@@ -37,6 +37,10 @@ public class BossController : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private GameObject projectilePrefab;
+
+    [SerializeField] private EnemyHealth[] phases;
+
+    public EnemyHealth currentEnemy => phases[currentBossPhases];
 
     float timeToReach = 0;
 
@@ -71,7 +75,7 @@ public class BossController : MonoBehaviour
 
     public void Start()
     {
-        
+
         stage = BossStage.Hooked;
         movingArm = 1;
         fixedArm = 0;
@@ -89,13 +93,17 @@ public class BossController : MonoBehaviour
         if (stage == BossStage.Hooked || stage == BossStage.Attacking || stage == BossStage.Exposed || stage == BossStage.Stunned)
         {
 
-            if (Time.time < timeToReach) {
+            if (Time.time < timeToReach)
+            {
                 HandleTimedBehaviour();
-            } else
+            }
+            else
             {
                 ChangeStage();
             }
-        } else {
+        }
+        else
+        {
             HandleUntimedBehaviour();
         }
 
@@ -122,6 +130,7 @@ public class BossController : MonoBehaviour
             case BossStage.Attacking:
                 timeToReach = Time.time + exposedTime;
                 stage = BossStage.Exposed;
+                currentEnemy.gameObject.SetActive(true);
                 exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = openedEye;
                 pupilAnimation.gameObject.SetActive(true);
@@ -183,12 +192,12 @@ public class BossController : MonoBehaviour
 
     private void HandleUntimedBehaviour()
     {
-        if(stage == BossStage.HookEngaging)
+        if (stage == BossStage.HookEngaging)
         {
-            if(Vector2.Distance(enviromentGrips[selectedGrip].position, hairHands[movingArm].transform.position) < 0.1f)
+            if (Vector2.Distance(enviromentGrips[selectedGrip].position, hairHands[movingArm].transform.position) < 0.1f)
             {
 
-                
+
 
                 hairHands[movingArm].constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 hairHands[fixedArm].constraints = RigidbodyConstraints2D.None;
@@ -198,7 +207,8 @@ public class BossController : MonoBehaviour
                 ChangeGripWithRandom();
                 SwitchArm();
                 ChangeStage();
-            } else
+            }
+            else
             {
 
                 Vector3 newPosition = Vector3.MoveTowards(
@@ -206,7 +216,7 @@ public class BossController : MonoBehaviour
                     hairHandSpeed * Time.fixedDeltaTime);
                 hairHands[movingArm].MovePosition(newPosition);
             }
-            
+
         }
     }
 
@@ -221,13 +231,15 @@ public class BossController : MonoBehaviour
     private void ChangeGripWithRandom()
     {
 
-        if(selectedGrip == enviromentGrips.Count - 1)
+        if (selectedGrip == enviromentGrips.Count - 1)
         {
             selectedGrip = selectedGrip - 2;
-        } else if (selectedGrip == 0)
+        }
+        else if (selectedGrip == 0)
         {
             selectedGrip = 1;
-        } else
+        }
+        else
         {
             System.Random rand = new System.Random();
             int result;
@@ -290,9 +302,14 @@ public class BossController : MonoBehaviour
     }
 
     [ContextMenu("IncrementPhase")]
-    public void IncrementPhase() {
+    public void IncrementPhase()
+    {
 
+        currentEnemy.gameObject.SetActive(false);
         currentBossPhases++;
+        if (currentBossPhases < bossPhases)
+            currentEnemy.gameObject.SetActive(true);
+
         ForceStunning();
         if (currentBossPhases == bossPhases)
         {

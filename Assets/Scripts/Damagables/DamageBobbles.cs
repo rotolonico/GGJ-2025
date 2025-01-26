@@ -16,6 +16,7 @@ public class DamageBobbles : MonoBehaviour, IBobble
             return;
 
         _enemy = other.GetComponent<EnemyHealth>();
+        _enemy ??= other.GetComponentInParent<BossController>().currentEnemy;
         _enemy.TakeDamage(_dmgPerParticle);
     }
 

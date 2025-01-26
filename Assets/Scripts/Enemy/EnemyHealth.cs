@@ -1,21 +1,26 @@
 using System.Collections;
+using System.Collections.Generic;
 using Enemy;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private bool isBoss = false;
     [SerializeField] private float _initHealth;
 
     [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private UnityEvent _onDeath;
 
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private List<SpriteRenderer> renderers = new List<SpriteRenderer>();
+
+    Coroutine blinking = null;
 
     private float _health;
     private bool _isAlive => _health != 0;
 
-    private void Start()
+    private void OnEnable()
     {
         _health = _initHealth;
     }
@@ -24,30 +29,47 @@ public class EnemyHealth : MonoBehaviour
     {
         if (!_isAlive)
             return;
-        
+
         _health -= damage;
 
         if (_health > 0)
         {
             _onDamage?.Invoke();
-            StartCoroutine(BlinkRed());
+
+            if (blinking == null)
+                blinking = StartCoroutine(BlinkRed());
         }
-        
+
         if (_health <= 0)
         {
             _health = 0;
+
             _onDeath?.Invoke();
-            GetComponent<EnemyBehaviour>().Die();
+            GetComponent<EnemyBehaviour>()?.Die();
         }
     }
-    
+
     private IEnumerator BlinkRed()
     {
         for (int i = 0; i < 3; i++)
         {
-            sr.color = Color.red;
+            if (isBoss)
+            {
+                foreach (var item in renderers)
+                    item.color = Color.red;
+            }
+            else
+                sr.color = Color.red;
             yield return new WaitForSeconds(0.1f);
-            sr.color = Color.white;
+
+
+            if (isBoss)
+            {
+                foreach (var item in renderers)
+                    item.color = Color.white;
+            }
+            else
+                sr.color = Color.white;
             yield return new WaitForSeconds(0.1f);
         }
     }

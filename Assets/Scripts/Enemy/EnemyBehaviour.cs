@@ -162,13 +162,13 @@ namespace Enemy
 
         public void Die()
         {
-            Destroy(gameObject);
             
             if (isDead)
                 return;
 
             isDead = true;
-            animator.Play("RatDead");
+            animator?.Play("RatDead");
+            gameObject.SetActive(false);
             
             StartCoroutine(Revive());
         }
