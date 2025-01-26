@@ -24,6 +24,8 @@ public class BossController : MonoBehaviour
 
     [SerializeField] private Animation pupilAnimation;
 
+    [SerializeField] private Transform exclamationMark;
+
     [Header("Parameters")]
     [SerializeField] private float hairHandSpeed;
     [SerializeField] private float projectileAngle = 30f; 
@@ -96,6 +98,13 @@ public class BossController : MonoBehaviour
         } else {
             HandleUntimedBehaviour();
         }
+
+
+        // mantiene punto esclamativo
+        exclamationMark.transform.position = bodyTransform.position + new Vector3(0, 18, 0);
+
+        // Fissa la rotazione, assicurando che rimanga sempre dritta
+        exclamationMark.transform.rotation = Quaternion.identity;
     }
 
     private void ChangeStage()
@@ -105,6 +114,7 @@ public class BossController : MonoBehaviour
             case BossStage.Hooked:
                 timeToReach = Time.time + attackingTime;
                 stage = BossStage.Attacking;
+                exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
                 SpawnProjectiles();
@@ -112,6 +122,7 @@ public class BossController : MonoBehaviour
             case BossStage.Attacking:
                 timeToReach = Time.time + exposedTime;
                 stage = BossStage.Exposed;
+                exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = openedEye;
                 pupilAnimation.gameObject.SetActive(true);
                 pupilAnimation.Rewind();
@@ -120,16 +131,19 @@ public class BossController : MonoBehaviour
             case BossStage.HookEngaging:
                 timeToReach = Time.time + hookedTime;
                 stage = BossStage.Hooked;
+                exclamationMark.gameObject.SetActive(true);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
                 break;
             case BossStage.Exposed:
                 stage = BossStage.HookEngaging;
+                exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
                 break;
             case BossStage.Stunned:
                 stage = BossStage.HookEngaging;
+                exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
                 break;
