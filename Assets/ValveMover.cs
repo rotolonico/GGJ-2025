@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class ValveMover : MonoBehaviour
 {
-    private void Start()
+    private void Update()
     {
-        
+        if (ValvesHandler.totalValves <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

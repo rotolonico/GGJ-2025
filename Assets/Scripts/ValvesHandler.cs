@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ValvesHandler : MonoBehaviour
 {
+    public static int maxValves = 4;
     public static int totalValves = 4;
     
-    [SerializeField] private TextMeshPro valvesText;
+    [SerializeField] private TextMeshProUGUI valvesText;
 
-    private void UpdateValveText() => valvesText.text = $"{totalValves}";
+    private void UpdateValveText() => valvesText.text = $"{totalValves}/{maxValves}";
 
     private void OnTriggerEnter2D(Collider2D other)
     {

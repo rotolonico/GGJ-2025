@@ -578,7 +578,7 @@ PrefabInstance:
     - target: {fileID: 5721123930853689467, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: valvesText
       value: 
-      objectReference: {fileID: 229796823}
+      objectReference: {fileID: 1267947127}
     - target: {fileID: 5971221253393325903, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -705,6 +705,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5971221253393325903, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
   m_PrefabInstance: {fileID: 612695714}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1267947127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1956128948197645941, guid: 4b19ad344cce24547bc4d682dff61489, type: 3}
+  m_PrefabInstance: {fileID: 1084887155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1809027230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4480316729994799574, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
