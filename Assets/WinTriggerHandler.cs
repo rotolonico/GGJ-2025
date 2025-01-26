@@ -6,7 +6,7 @@ public class WinTriggerHandler : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             SceneManager.LoadScene("BossFightTest");
         }
