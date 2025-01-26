@@ -2030,7 +2030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  _initHealth: 200
+  _initHealth: 25
   _onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -4456,7 +4456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  _initHealth: 200
+  _initHealth: 25
   _onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -4563,7 +4563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  _initHealth: 200
+  _initHealth: 25
   _onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -5584,7 +5584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wantedScene: {fileID: 102900000, guid: 63ea2596383734b9790c41b140c45245, type: 3}
   _loadMode: 0
-  _sceneIndex: 1
+  _sceneIndex: 0
   _useAdditionalCheck: 0
   _onLoadDirectly:
     m_PersistentCalls:
