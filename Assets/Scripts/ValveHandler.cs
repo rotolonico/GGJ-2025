@@ -27,7 +27,6 @@ public class ValveHandler : MonoBehaviour
             {
                 t += Time.deltaTime * speed;
                 transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
-                transform.localScale -= new Vector3(Time.deltaTime * speed * 20, Time.deltaTime * speed * 20, 0);
                 yield return null;
             }
         }
