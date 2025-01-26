@@ -175,6 +175,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: punto_esclamativo
+      rect:
+        serializedVersion: 2
+        x: 2863
+        y: 1797
+        width: 188
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b128165e93da2fc44976bff8e9277202
+      internalID: 1528864876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -191,6 +213,7 @@ TextureImporter:
     nameFileIdTable:
       RATTO Allerta Sporco_0: 5509748266796418821
       RATTO Allerta Sporco_2: 185377161550307546
+      punto_esclamativo: 1528864876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
