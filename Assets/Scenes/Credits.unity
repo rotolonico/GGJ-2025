@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 857713413}
   - component: {fileID: 857713412}
   - component: {fileID: 857713416}
+  - component: {fileID: 857713417}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -379,6 +380,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d84d0c6a74e454694e0726ac96eac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &857713417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857713411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97fa8278305c2474ebfd4dc24a43881b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &872533221
@@ -606,9 +619,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuSceneHandler, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 857713417}
+        m_TargetAssemblyTypeName: CreditSceneHandler, Assembly-CSharp
+        m_MethodName: MenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
