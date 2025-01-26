@@ -6,7 +6,7 @@ public class MenuSceneHandler : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("TubeGeneratorExample");
+        SceneManager.LoadScene("BubbleScene");
     }
 
     public void Credits()
