@@ -111,6 +111,9 @@ MonoBehaviour:
   currentHealth: 5
   healthText: {fileID: 0}
   spriteRenderers: []
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4003240023140673673
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +713,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: CollisionModule.collisionMode
       value: 1
       objectReference: {fileID: 0}
@@ -723,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 257
+      value: 265
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
@@ -752,6 +759,10 @@ PrefabInstance:
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[4].time
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
@@ -930,6 +941,10 @@ PrefabInstance:
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: ShapeModule.m_Rotation.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2553318478663546508, guid: ab47b8e249da547469b3d376cb9642c0, type: 3}
       propertyPath: CollisionModule.collisionMode

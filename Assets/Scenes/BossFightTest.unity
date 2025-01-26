@@ -2672,24 +2672,68 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1442115056}
     - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: simulationSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 30.427988
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: ClampVelocityModule.dampen
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: ClampVelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 152.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 265
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725938211103620351, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
-      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7574105515506966036, guid: 31b9fc41d95628b488b675420d737fd5, type: 3}
       propertyPath: m_IsActive
