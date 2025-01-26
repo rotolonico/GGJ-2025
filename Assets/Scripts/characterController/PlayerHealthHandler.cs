@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
+[DefaultExecutionOrder(-100)]
 public class PlayerHealthHandler : MonoBehaviour
 {
     public int maxHealth = 5;
@@ -12,10 +14,18 @@ public class PlayerHealthHandler : MonoBehaviour
 
     [SerializeField] private SpriteRenderer[] spriteRenderers;
 
-    private bool invincibilityFrames = false;
+    [SerializeField] public UnityEvent onDeathEvent;
 
+    private bool invincibilityFrames = false;
     private bool onPlatform;
-    
+
+    public static UnityAction onDeath;
+
+    private void Awake()
+    {
+        onDeath = null;
+    }
+
     private void Update()
     {
         healthText.text = $"{currentHealth}/{maxHealth}";
@@ -112,6 +122,9 @@ public class PlayerHealthHandler : MonoBehaviour
 
     private void Die()
     {
+        onDeathEvent?.Invoke();
+        onDeath?.Invoke();
+        gameObject.SetActive(false);
         // TODO, connect to gamehandler.Die
     }
 }
