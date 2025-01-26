@@ -11,7 +11,8 @@ public class CharacterController : MonoBehaviour
 
     // player parameters
     [SerializeField] private float movSpeed;
-    [SerializeField] public float deceleration;
+    [SerializeField] private float deceleration;
+    [SerializeField] private bool lockYAxis = false;
 
     private Vector2 speed;
 
@@ -62,7 +63,7 @@ public class CharacterController : MonoBehaviour
             float angle = Mathf.Atan2(inputLookVector.y, inputLookVector.x) * Mathf.Rad2Deg + 90;
             armDummy.rotation = Quaternion.Euler(0, 0, angle);
 
-            Debug.Log($"Braccio ruotato a: {angle} gradi");
+            //Debug.Log($"Braccio ruotato a: {angle} gradi");
         }
 
     }
@@ -91,7 +92,7 @@ public class CharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
-        speed = inputMoveVector * movSpeed;
+        speed = lockYAxis ? new Vector2(inputMoveVector.x, 0) * movSpeed : inputMoveVector * movSpeed;
         playerRB.linearVelocity = isMoving ? Vector2.zero : speed;
     }
 
