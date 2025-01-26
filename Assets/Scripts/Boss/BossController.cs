@@ -125,6 +125,8 @@ public class BossController : MonoBehaviour
             case BossStage.Hooked:
                 timeToReach = Time.time + attackingTime;
                 stage = BossStage.Attacking;
+                bodyTransform.GetComponent<CircleCollider2D>().enabled = false;
+
                 exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
@@ -133,6 +135,7 @@ public class BossController : MonoBehaviour
             case BossStage.Attacking:
                 timeToReach = Time.time + exposedTime;
                 stage = BossStage.Exposed;
+                bodyTransform.GetComponent<CircleCollider2D>().enabled = true;
                 currentEnemy.gameObject.SetActive(true);
                 exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = openedEye;
@@ -143,18 +146,23 @@ public class BossController : MonoBehaviour
             case BossStage.HookEngaging:
                 timeToReach = Time.time + hookedTime;
                 stage = BossStage.Hooked;
+                bodyTransform.GetComponent<CircleCollider2D>().enabled = false;
+
                 exclamationMark.gameObject.SetActive(true);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
                 break;
             case BossStage.Exposed:
                 stage = BossStage.HookEngaging;
+                bodyTransform.GetComponent<CircleCollider2D>().enabled = false;
+
                 exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
                 break;
             case BossStage.Stunned:
                 stage = BossStage.HookEngaging;
+                bodyTransform.GetComponent<CircleCollider2D>().enabled = false;
                 exclamationMark.gameObject.SetActive(false);
                 currentEye.sprite = halfOpenedEye;
                 pupilAnimation.gameObject.SetActive(false);
@@ -168,6 +176,7 @@ public class BossController : MonoBehaviour
     {
         timeToReach = Time.time + stunnedTime;
         stage = BossStage.Stunned;
+        bodyTransform.GetComponent<CircleCollider2D>().enabled = false;
         currentEye.sprite = openedEye;
         pupilAnimation.gameObject.SetActive(true);
         pupilAnimation.Rewind();
