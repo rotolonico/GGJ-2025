@@ -72,6 +72,8 @@ public class EnemyHealth : MonoBehaviour
                 sr.color = Color.white;
             yield return new WaitForSeconds(0.1f);
         }
+
+        blinking = null;
     }
 
     public void Revive()
