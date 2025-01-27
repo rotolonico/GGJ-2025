@@ -12,4 +12,4 @@ Created in just **48 hours** for the **2025 Global Game Jam** in Bari Hub.
 ---
 
 ### Play Now  
-Find the game on the Global Game Jam website: [TubQuest on GGJ](https://globalgamejam.org/games/2025/tubquest-9)
+Find the game on the Global Game Jam website: [TubQuest on GGJ](https://globalgamejam.org/games/2025/tubquest-3)
